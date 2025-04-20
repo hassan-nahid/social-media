@@ -1,19 +1,27 @@
+import MainLayout from "../layouts/MainLayout";
+
 import {
     createBrowserRouter,
-  } from "react-router";
-import MainLayout from "../layouts/MainLayout";
+} from "react-router";
+import Login from "../pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
+import Home from "../pages/Home/Home";
 
 
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      {
+    {
         path: "/",
-        element: <div>Home </div>,
-      },
-    ],
-  },
+        element: <PrivateRoute><MainLayout /></PrivateRoute>,
+        children: [
+            {
+                path: "/",
+                element: <Home />,
+            },
+        ],
+    },
+    {
+        path: "/login",
+        element: <Login />
+    }
 ])

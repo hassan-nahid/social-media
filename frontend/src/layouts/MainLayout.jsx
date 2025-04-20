@@ -14,6 +14,7 @@ const MainLayout = () => {
             <Footer/>
         </div>
         <div className="block md:hiddden ">
+
             <MobileNavbar/>
         </div>
     </div>
