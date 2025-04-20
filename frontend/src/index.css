@@ -10,8 +10,34 @@
   --text-gray: #FFFFFF80;
 }
 
-* {
+
+body{
   font-family: "Outfit", sans-serif;
   background-color: var(--black-color);
   color: var(--text-gray);
+}
+
+.yellow-color {
+  @apply bg-[var(--yellow-color)]
+}
+
+.black-color {
+  @apply bg-[var(--black-color)]
+}
+
+.gray-color {
+  @apply bg-[var(--gray-color)]
+}
+
+.white-color {
+  @apply bg-[var(--white-color)]
+}
+
+.text-gray {
+  @apply text-[var(--text-gray)]
+}
+
+
+.navIcon {
+  @apply absolute text-[var(--white-color)] top-6 left-2 w-1.5 h-1.5 rounded-full bg-[var(--yellow-color)]
 }
