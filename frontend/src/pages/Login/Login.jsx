@@ -18,8 +18,8 @@ const Login = () => {
    
     return (
         <div className='w-full mx-auto bg-login-gradient rounded-b-xl'>
-            <div className='flex p-3.5'>
-                <div className='w-full h-full md:w-[55%] lg:w-[55%]'>
+            <div className='flex p-3.5 gap-4'>
+                <div style={{height: 'calc(100vh - 28px)'}} className='w-full md:w-[55%] lg:w-[55%]'>
                     <div className='flex items-center m-9 gap-2'>
                         <img className='h-10 w-10' src={logoImage} alt="logo" />
                         <h1 className='text-[30px] font-extrabold login-logo-text'>Zomiraq</h1>
