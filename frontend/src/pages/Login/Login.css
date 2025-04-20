@@ -1,0 +1,54 @@
+.bg-login-gradient {
+    background: linear-gradient(245deg, rgba(0, 0, 0, 0.34) 48.86%, rgba(102, 102, 102, 0.34) 98.95%);
+}
+
+
+.login-logo-text {
+    background: linear-gradient(260deg, #FFFD02 36.74%, #999801 97.35%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-middle-text {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: var(--white-color)
+}
+
+.login-input {
+    border-radius: 3px;
+    border: 3px solid #FFF;
+    background: #282828;
+    flex-shrink: 0
+}
+
+.login-text-color{
+    color: var(--text-gray);
+}
+
+input[type="checkbox"] {
+    appearance: none; /* Remove default checkbox styling */
+    width: 20px;
+    height: 20px;
+    border: 2px solid white; /* Border color */
+    border-radius: 4px; /* Optional: make it rounded */
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: var(--text-gray); /* Checked background color */
+    border-color: var(--text-gray);
+  }
+  
+  input[type="checkbox"]:checked::after {
+    content: "✔"; /* Add a checkmark */
+    color: black;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
