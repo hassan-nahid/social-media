@@ -26,7 +26,7 @@ const handleGoogleSignIn = async () => {
 }
     return (
         <div className="max-w-[700px] mx-auto">
-            <button onClick={handleGoogleSignIn} className={`h-[55px] bg-black text-white w-full mt-7 text-2xl font-light ${isBouncing ? "bounce-once" : ""
+            <button onClick={handleGoogleSignIn} className={`h-[55px] cursor-pointer bg-black text-white w-full mt-7 text-2xl font-light ${isBouncing ? "bounce-once" : ""
   }`}>Sign In With Google</button>
         </div>
     )

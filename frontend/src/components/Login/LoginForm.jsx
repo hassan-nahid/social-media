@@ -75,11 +75,11 @@ const LoginForm = ({ isSignup }) => {
               <input className="login-text-color" type="checkbox" id="remember" name="remember" />
               <label htmlFor="remember" className="login-text-color">Remember me</label>
             </div>
-            <a href="#" className="login-text-color">Forgot Password?</a>
+            <a href="#" className="hover:text-white">Forgot Password?</a>
           </div>
         )}
   
-        <button className={`h-[55px] bg-black text-white w-full mt-7 text-2xl font-light ${isBouncing ? "bounce-once" : ""
+        <button className={`h-[55px] cursor-pointer bg-black text-white w-full mt-7 text-2xl font-light ${isBouncing ? "bounce-once" : ""
   }`} type="submit">
           {isSignup ? "Sign Up" : "Sign In"}
         </button>

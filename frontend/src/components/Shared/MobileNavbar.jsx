@@ -1,10 +1,10 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { GoHomeFill } from "react-icons/go";
 import { IoSettingsSharp } from "react-icons/io5";
 import { TbMessageCircleFilled } from "react-icons/tb";
 import { FaPlusCircle } from "react-icons/fa";
 import { assest } from "../../assets/assest";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const MobileNavbar = () => {
   const navigate = useNavigate();
