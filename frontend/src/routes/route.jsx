@@ -4,13 +4,14 @@ import {
     createBrowserRouter,
 } from "react-router";
 import Login from "../pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
 
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout />,
+        element: <PrivateRoute><MainLayout /></PrivateRoute>,
         children: [
             {
                 path: "/",
