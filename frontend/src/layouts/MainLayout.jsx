@@ -13,7 +13,7 @@ const MainLayout = () => {
         <div>
             <Footer/>
         </div>
-        <div className="block md:hiddden lg:hiddden xl:hiddden 2xl:hiddden">
+        <div className="">
             <MobileNavbar/>
         </div>
     </div>
