@@ -13,4 +13,5 @@
 * {
   font-family: "Outfit", sans-serif;
   background-color: var(--black-color);
+  color: var(--text-gray);
 }
