@@ -12,6 +12,8 @@ const LoginForm = ({ isSignup }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isBouncing, setIsBouncing] = useState(false);
+
     const [
         createUserWithEmailAndPassword,
       ] = useCreateUserWithEmailAndPassword(auth);
@@ -23,7 +25,8 @@ const LoginForm = ({ isSignup }) => {
 
       const handleSubmit = async (e) => {
           e.preventDefault();
-      
+          setIsBouncing(true); // Trigger bounce animation
+          setTimeout(() => setIsBouncing(false), 500); 
           try {
               if (isSignup) {
                   const createdUser = await createUserWithEmailAndPassword(email, password);
@@ -47,7 +50,6 @@ const LoginForm = ({ isSignup }) => {
       };
       
     
-
     return (
       <form onSubmit={handleSubmit} className="max-w-[700px] mx-auto">
         {isSignup && (
@@ -77,7 +79,8 @@ const LoginForm = ({ isSignup }) => {
           </div>
         )}
   
-        <button className="h-[55px] bg-black text-white w-full mt-7 text-2xl font-light" type="submit">
+        <button className={`h-[55px] bg-black text-white w-full mt-7 text-2xl font-light ${isBouncing ? "bounce-once" : ""
+  }`} type="submit">
           {isSignup ? "Sign Up" : "Sign In"}
         </button>
       </form>

@@ -5,6 +5,7 @@ import {
 } from "react-router";
 import Login from "../pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
+import Home from "../pages/Home/Home";
 
 
 
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <div>Home </div>,
+                element: <Home />,
             },
         ],
     },
