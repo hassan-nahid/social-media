@@ -17,7 +17,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex justify-between items-center  sm:px-4 md:px-10  py-4 ">
+    <nav className="flex justify-between items-center  sm:px-4 md:px-12  py-4 ">
       {/* Logo & Search */}
       <div className="flex items-center gap-4">
         <img src={assest.logo} alt="Logo image" className="w-[50px] h-[50px] rounded-full" />
@@ -29,7 +29,7 @@ const Navbar = () => {
       </div>
 
       {/* Icon */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-14">
         {navItems.map((item, index) => {
           const IconComponent = item.icon;
           const isActive = location.pathname === item.path;

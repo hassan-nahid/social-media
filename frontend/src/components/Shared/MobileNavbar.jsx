@@ -24,7 +24,7 @@ const MobileNavbar = () => {
         {navItems.map((item, index) => {
           const IconComponent = item.icon;
           const isActive = location.pathname === item.path;
-
+          
           return (
             <button
               key={index}
@@ -44,7 +44,6 @@ const MobileNavbar = () => {
             </button>
           </div>
         </div>
-
 
         {/* Profile */}
         <div onClick={() => navigate('/profile')} className="flex flex-col items-center cursor-pointer">
