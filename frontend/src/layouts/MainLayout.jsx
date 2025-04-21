@@ -10,9 +10,9 @@ const MainLayout = () => {
             <Navbar/>
         </div>
         <Outlet/>
-        <div>
+        {/* <div>
             <Footer/>
-        </div>
+        </div> */}
         <div className="block md:hiddden ">
 
             <MobileNavbar/>
