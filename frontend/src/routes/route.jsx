@@ -8,6 +8,8 @@ import PrivateRoute from "./PrivateRoute";
 import Home from "../pages/Home/Home";
 import Setting from "../pages/Setting/Setting";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Profile from "../pages/Profile/Profile";
+import Message from "../pages/Message/Message";
 
 
 
@@ -20,6 +22,14 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+            },
+            {
+                path: "/profile",
+                element: <Profile />,
+            },
+            {
+                path: "/message",
+                element: <Message />,
             },
             {
                 path: "/setting",

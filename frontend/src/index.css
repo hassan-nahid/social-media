@@ -18,6 +18,31 @@ body {
   color: var(--text-gray);
 }
 
+
+::-webkit-scrollbar {
+  width: 8px; 
+  height: 100px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--yellow-color) ;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow-color) transparent;
+}
+
+
 .yellow-color {
   @apply bg-[var(--yellow-color)]
 }
