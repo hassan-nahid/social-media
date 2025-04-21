@@ -19,7 +19,7 @@ const Home = () => {
             <div className='h-screen w-[46%] bg-green-600'>
                 <FeedSection/>
             </div>
-            <div className='h-screen w-[27%] bg-blue-600'>
+            <div className='w-[27%]'>
                 <FriendSection/>
             </div>
             {/* add friend section */}
