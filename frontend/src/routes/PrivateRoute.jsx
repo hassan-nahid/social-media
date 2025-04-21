@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router"
 import useUser from "../hooks/useUser"
+import Loading from "../components/Shared/Loading"
 
 const PrivateRoute = ({children}) => {
     const {user, loading} = useUser()
     const navigate = useNavigate()
 
     if(loading) {
-        return <div>Loading...</div>
+        return <Loading/>
     }
     if(!user) {
         return navigate("/login")

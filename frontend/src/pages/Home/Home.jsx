@@ -1,20 +1,28 @@
 import React from 'react'
-import { useSignOut } from 'react-firebase-hooks/auth';
-import auth from '../../firebase/firebase.config';
+import ProfileSection from '../../components/Home/ProfileSection'
+import FeedSection from '../../components/Home/FeedSection'
+import FriendSection from '../../components/Home/FriendSection'
+
 
 const Home = () => {
-    const [signOut] = useSignOut(auth);
 
 
-    const handleLogout = async () => {
-        await signOut();
-    }
 
     return (
-        <div>Home
+        <div className='flex max-w-[1440px] mx-auto gap-4'>
+            {/* profile section */}
+            <div className='h-screen w-[27%] bg-red-600'>
+                <ProfileSection/>
+            </div>
 
-            <button onClick={handleLogout} className="h-[55px] w-[100px] bg-black text-white mt-7 text-2xl font-light">logout</button>
-
+            {/* feed section */}
+            <div className='h-screen w-[46%] bg-green-600'>
+                <FeedSection/>
+            </div>
+            <div className='h-screen w-[27%] bg-blue-600'>
+                <FriendSection/>
+            </div>
+            {/* add friend section */}
         </div>
     )
 }
