@@ -6,7 +6,7 @@ const FriendSectionCard = () => {
         <div className='black-color rounded-xl p-4'>
             <div className='flex justify-start items-center gap-3'>
                 <div className='relative'>
-                    <img className='h-14 w-14 cursor-pointer rounded-2xl' src={assest.FriendSectionProfile} alt="profile pic" />
+                    <img className='h-14 w-14 cursor-pointer rounded-2xl' src={assest.FriendSectionProfile || assest.blankImage} alt="profile pic" />
                     <img src={assest.verifyLogo} alt="verify logo" className='h-[45px] w-[70px] absolute bottom-7 left-6' />
                 </div>
                 <div>
