@@ -3,7 +3,7 @@ import { IoMdClose } from "react-icons/io"
 
 const FriendSection = ({ onClose }) => {
   return (
-    <div className="gray-color rounded-xl p-4 h-full">
+    <div className="gray-color rounded-xl p-4 h-full ">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-white text-2xl font-medium">Friends</h1>
         {/* Close button for small/medium only */}

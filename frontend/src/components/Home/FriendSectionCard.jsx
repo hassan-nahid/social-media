@@ -3,7 +3,7 @@ import { assest } from "../../assets/assest"
 
 const FriendSectionCard = () => {
     return (
-        <div className='black-color rounded-xl p-4'>
+        <div className='black-color rounded-xl p-4 '>
             <div className='flex justify-start items-center gap-3'>
                 <div className='relative'>
                     <img className='h-14 w-14 cursor-pointer rounded-2xl' src={assest.FriendSectionProfile || assest.blankImage} alt="profile pic" />

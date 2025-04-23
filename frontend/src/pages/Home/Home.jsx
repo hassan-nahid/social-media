@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='relative flex max-w-[1440px] mx-auto gap-4 h-full'>
+    <div className='relative flex max-w-[1440px] mx-auto gap-4 h-full '>
       {/* Profile section - only large screens */}
       <div  className='w-[27%] hidden lg:block overflow-y-auto'>
         <ProfileSection />
@@ -28,7 +28,7 @@ const Home = () => {
       {/* Feed section */}
       <div
       style={isSmallScreen ? { height: 'calc(100vh - 28px)' } : {}}
-      className={`w-full lg:w-[46%]  overflow-y-auto ${
+      className={`w-full lg:w-[46%] overflow-y-auto ${
         isSmallScreen ? '' : 'h-full'
       }`}
     >

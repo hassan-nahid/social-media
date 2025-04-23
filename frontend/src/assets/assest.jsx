@@ -11,6 +11,10 @@ import messageIcon from "../assets/Vector.png"
 import heartIcon from "../assets/Heart.png"
 import profile2 from '../assets/profile2.png'
 import postImage from '../assets/postImage.png'
+import Story1 from "../assets/story1.jpg"
+import Story2 from "../assets/story2.jpg"
+import Story3 from "../assets/story3.jpg"
+
 
 export const assest = {
     logo,
@@ -26,4 +30,7 @@ export const assest = {
     heartIcon,
     profile2,
     postImage,
+    Story1,
+    Story2,
+    Story3,
 }

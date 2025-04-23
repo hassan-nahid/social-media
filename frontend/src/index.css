@@ -20,27 +20,15 @@ body {
 }
 
 
-::-webkit-scrollbar {
-  width: 8px; 
-  height: 100px;
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--yellow-color) ;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--yellow-color) transparent;
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 
@@ -67,4 +55,17 @@ body {
 
 .navIcon {
   @apply absolute text-[var(--white-color)] top-6 left-2 w-1.5 h-1.5 rounded-full bg-[var(--yellow-color)]
+}
+
+@keyframes story-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-story-progress {
+  animation: story-progress 4s linear forwards;
 }
