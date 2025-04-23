@@ -29,6 +29,12 @@ const StoryUploader = ({ onUpload }) => {
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false)
+    setSelectedFile(null);
+    setPreview(null);
+  }
+
   return (
     <>
       {/* Open Modal Button */}
@@ -42,18 +48,18 @@ const StoryUploader = ({ onUpload }) => {
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center">
-          <div className="gray-colo rounded-xl p-6 w-80 relative">
-            <h2 className="text-lg font-semibold mb-4">Upload Your Story</h2>
+          <div className="gray-color rounded-xl p-6 w-80 relative">
+            <h2 className="text-lg font-semibold mb-4 text-white">Upload Your Story</h2>
 
             {/* Preview */}
             {preview ? (
               <img
                 src={preview}
                 alt="Preview"
-                className="w-full h-40 object-cover rounded-lg mb-4"
+                className="w-full h-full object-cover rounded-lg mb-4"
               />
             ) : (
-              <div className="w-full h-40 bg-black rounded-lg mb-4 flex items-center justify-center text-gray-400">
+              <div className="w-full h-40 gary-color border-2 rounded-lg mb-4 flex items-center justify-center">
                 No image selected
               </div>
             )}
@@ -76,14 +82,14 @@ const StoryUploader = ({ onUpload }) => {
             {/* Action Buttons */}
             <div className="flex justify-end gap-3">
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={handleClose}
                 className="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400"
               >
                 Cancel
               </button>
               <button
                 onClick={handleUpload}
-                className="px-4 py-2 bg-yellow-400 text-black font-semibold rounded-md hover:bg-yellow-500"
+                className="px-4 py-2 bg-yellow-300 text-black font-semibold rounded-md hover:bg-yellow-500"
               >
                 Upload
               </button>
