@@ -28,7 +28,7 @@ const Home = () => {
       {/* Feed section */}
       <div
       style={isSmallScreen ? { height: 'calc(100vh - 28px)' } : {}}
-      className={`w-full lg:w-[46%] bg-green-600 overflow-y-auto ${
+      className={`w-full lg:w-[46%]  overflow-y-auto ${
         isSmallScreen ? '' : 'h-full'
       }`}
     >
