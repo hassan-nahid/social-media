@@ -4,7 +4,7 @@ import StorySection from "./StorySection"
 
 const FeedSection = () => {
   return (
-    <div>
+    <div className="w-full">
       {/* Story part */}
       <StorySection/>
 

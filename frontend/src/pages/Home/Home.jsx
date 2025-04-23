@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import ProfileSection from '../../components/Home/ProfileSection'
-import FeedSection from '../../components/Home/FeedSection'
-import FriendSection from '../../components/Home/FriendSection'
-import { FaUserFriends } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react';
+import ProfileSection from '../../components/Home/ProfileSection';
+import FeedSection from '../../components/Home/FeedSection';
+import FriendSection from '../../components/Home/FriendSection';
+import { FaUserFriends } from 'react-icons/fa';
 
 const Home = () => {
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
@@ -19,21 +19,19 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='relative flex max-w-[1440px] mx-auto gap-4 h-full '>
+    <div className='relative flex max-w-[1440px] mx-auto gap-4 h-full'>
       {/* Profile section - only large screens */}
-      <div  className='w-[27%] hidden lg:block overflow-y-auto'>
+      <div className='w-[27%] hidden lg:block overflow-y-auto'>
         <ProfileSection />
       </div>
 
       {/* Feed section */}
       <div
-      style={isSmallScreen ? { height: 'calc(100vh - 28px)' } : {}}
-      className={`w-full lg:w-[46%] overflow-y-auto ${
-        isSmallScreen ? '' : 'h-full'
-      }`}
-    >
-      <FeedSection />
-    </div>
+        style={isSmallScreen ? { height: 'calc(100vh - 28px)' } : { height: '100vh' }} // Ensure full height on larger screens as well
+        className={`w-full lg:w-[46%] overflow-y-auto`}
+      >
+        <FeedSection />
+      </div>
 
       {/* Friend section - only large screens */}
       <div className='w-[27%] hidden lg:block h-full overflow-y-auto'>
@@ -49,11 +47,11 @@ const Home = () => {
       </button>
 
       {/* Sidebar - mobile only */}
-      <div className={`fixed top-0 right-0 h-full w-[90%] max-w-sm  z-50 transform transition-transform duration-300 ease-in-out ${showSidebar ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}>
+      <div className={`fixed top-0 right-0 h-full w-[90%] max-w-sm z-50 transform transition-transform duration-300 ease-in-out ${showSidebar ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}>
         <FriendSection onClose={() => setShowSidebar(false)} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
