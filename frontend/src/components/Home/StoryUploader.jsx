@@ -42,7 +42,7 @@ const StoryUploader = ({ onUpload }) => {
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center">
-          <div className="gray-color rounded-xl p-6 w-80 relative">
+          <div className="gray-colo rounded-xl p-6 w-80 relative">
             <h2 className="text-lg font-semibold mb-4">Upload Your Story</h2>
 
             {/* Preview */}
