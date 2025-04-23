@@ -9,7 +9,7 @@ const initialStories = [
     userId: 1,
     userName: "John",
     profilePic: assest.FriendSectionProfile,
-    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
+    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }, { id: 2, image: assest.Story2 }],
   },
 
   {
