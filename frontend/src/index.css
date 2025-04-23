@@ -67,3 +67,16 @@ body {
 .navIcon {
   @apply absolute text-[var(--white-color)] top-6 left-2 w-1.5 h-1.5 rounded-full bg-[var(--yellow-color)]
 }
+
+@keyframes story-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-story-progress {
+  animation: story-progress 4s linear forwards;
+}
