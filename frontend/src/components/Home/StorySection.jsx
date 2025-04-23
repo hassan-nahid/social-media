@@ -11,42 +11,7 @@ const initialStories = [
     profilePic: assest.FriendSectionProfile,
     stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
   },
-  {
-    userId: 1,
-    userName: "John",
-    profilePic: assest.FriendSectionProfile,
-    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
-  },
-  {
-    userId: 1,
-    userName: "John",
-    profilePic: assest.FriendSectionProfile,
-    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
-  },
-  {
-    userId: 1,
-    userName: "John",
-    profilePic: assest.FriendSectionProfile,
-    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
-  },
-  {
-    userId: 1,
-    userName: "John",
-    profilePic: assest.FriendSectionProfile,
-    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
-  },
-  {
-    userId: 1,
-    userName: "John",
-    profilePic: assest.FriendSectionProfile,
-    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
-  },
-  {
-    userId: 1,
-    userName: "John",
-    profilePic: assest.FriendSectionProfile,
-    stories: [{ id: 1, image: assest.Story1 }, { id: 2, image: assest.Story2 }],
-  },
+  
 
   {
     userId: 2,
