@@ -3,7 +3,7 @@ import { SyncLoader } from 'react-spinners'; // Import SyncLoader
 
 const Loading = () => {
   return (
-    <div className='flex justify-center items-center h-[500px]'>
+    <div className='flex justify-center items-center h-screen'>
       <SyncLoader
         color="white" // Customize the color
         margin={10}

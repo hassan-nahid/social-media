@@ -36,7 +36,7 @@ const ProfileSection = () => {
   };
 
   return (
-    <section>
+    <section className='h-screen p-4'>
       <div className="relative h-[533px] bg-white-color w-full rounded-[15px] overflow-hidden">
         {/* Cover Image */}
         <div className="relative h-[200px] w-full">

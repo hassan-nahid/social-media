@@ -19,7 +19,7 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="flex justify-between items-center sm:px-4 md:px-12 py-2">
+    <nav className="flex justify-between black-color items-center sm:px-4 md:px-12 py-2">
       {/* Logo & Search */}
       <div className="flex items-center gap-4">
         <img src={assest.logo} alt="Logo" className="w-[30px] h-[30px] rounded-full" />

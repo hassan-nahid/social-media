@@ -21,20 +21,20 @@ const Home = () => {
   return (
     <div className='relative flex max-w-[1440px] mx-auto gap-4 h-full'>
       {/* Profile section - only large screens */}
-      <div className='w-[27%] hidden lg:block overflow-y-auto'>
+      <div style={{ height: 'calc(100vh - 65px)' }} className='w-[27%] hidden lg:block overflow-y-auto'>
         <ProfileSection />
       </div>
 
       {/* Feed section */}
       <div
-        style={isSmallScreen ? { height: 'calc(100vh - 28px)' } : { height: '100vh' }} // Ensure full height on larger screens as well
+        style={isSmallScreen ? { height: 'calc(100vh - 65px)' } : { height: 'calc(100vh - 65px)' }} // Ensure full height on larger screens as well
         className={`w-full lg:w-[46%] overflow-y-auto`}
       >
         <FeedSection />
       </div>
 
       {/* Friend section - only large screens */}
-      <div className='w-[27%] hidden lg:block h-full overflow-y-auto'>
+      <div style={{ height: 'calc(100vh - 65px)' }} className='w-[27%] hidden lg:block h-full overflow-y-auto'>
         <FriendSection />
       </div>
 

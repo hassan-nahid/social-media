@@ -5,11 +5,14 @@ import MobileNavbar from "../components/Shared/MobileNavbar"
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="h-screen">
         <div className="hidden sm:block lg:block xl:block 2xl:block">
             <Navbar/>
         </div>
+        <div>
         <Outlet/>
+
+        </div>
         {/* <div>
             <Footer/>
         </div> */}
