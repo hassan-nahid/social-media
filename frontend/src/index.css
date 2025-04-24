@@ -21,28 +21,35 @@ body {
 
 
 
-::-webkit-scrollbar {
-  width: 8px; 
-  height: 100px;
+/* Custom scroll on hover */
+.scroll-on-hover {
+  overflow-y: scroll; /* Force reserve scrollbar space */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
-::-webkit-scrollbar-track {
+.scroll-on-hover:hover {
+  scrollbar-color: var(--yellow-color) transparent;
+}
+
+/* WebKit browsers */
+.scroll-on-hover::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-on-hover::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--yellow-color) ;
+.scroll-on-hover::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Invisible thumb by default */
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-corner {
-  background: transparent;
+.scroll-on-hover:hover::-webkit-scrollbar-thumb {
+  background-color: var(--yellow-color); /* Yellow on hover */
 }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--yellow-color) transparent;
-}
 
 
 .yellow-color {

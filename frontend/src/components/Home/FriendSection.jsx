@@ -20,7 +20,7 @@ const FriendSection = ({ onClose }) => {
         className="border-2 text-white border-b-gray-500 h-10 px-4 rounded-xl w-full mb-6"
       />
 
-      <div className="friend-scroll flex flex-col gap-4 overflow-y-auto h-[calc(100vh-210px)]">
+      <div className="scroll-on-hover flex flex-col gap-4 overflow-y-auto h-[calc(100vh-210px)]">
         <FriendSectionCard />
         <FriendSectionCard />
         <FriendSectionCard />
