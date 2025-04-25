@@ -31,7 +31,7 @@ const Message = () => {
 
       {/* Chat Section */}
       <div
-        className={`md:w-[70%] w-full h-full rounded-xl bg-blue-400 md:block ${
+        className={`md:w-[70%] w-full h-full rounded-xl md:block ${
           activeProfile && isMobile ? 'block' : 'hidden'
         }`}
       >
