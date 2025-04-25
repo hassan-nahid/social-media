@@ -14,7 +14,8 @@ import postImage from '../assets/postImage.png'
 import Story1 from "../assets/story1.jpg"
 import Story2 from "../assets/story2.jpg"
 import Story3 from "../assets/story3.jpg"
-
+import emoji from "../assets/Emoji.png"
+import fileIcon from "../assets/fileIcon.png"
 
 export const assest = {
     logo,
@@ -33,4 +34,6 @@ export const assest = {
     Story1,
     Story2,
     Story3,
+    emoji,
+    fileIcon,
 }

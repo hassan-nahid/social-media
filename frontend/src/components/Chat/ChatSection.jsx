@@ -5,17 +5,18 @@ import ChatFooter from './ChatFooter'
 
 const ChatSection = () => {
     const [toast, setToast] = useState(false);
-  
+
       const handleToast = () => {
           setToast(true);
           setTimeout(() => {
               setToast(false)
           }, 2000);
       };
-  
+
+
   return (
     <section>
-      <ChatHeader toast={toast} onToast={handleToast} />
+      <ChatHeader toast={toast} onToast={handleToast}  />
       <ChatBody/>
       <ChatFooter toast={toast} onToast={handleToast} />
     </section>

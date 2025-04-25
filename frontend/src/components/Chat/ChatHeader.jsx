@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { assest } from '../../assets/assest';
 import { MdAddIcCall } from "react-icons/md";
 import { IoVideocam } from "react-icons/io5";
-import { FaInfoCircle, FaBriefcase, FaGraduationCap, FaHome, FaMapMarkerAlt, FaHeart } from 'react-icons/fa';
-import UserProfile from '../Home/UserProfile';
+import { FaInfoCircle } from 'react-icons/fa';
+import { IoCloseCircleSharp } from "react-icons/io5";
 
 const ChatHeader = ({ toast, onToast }) => {
 
@@ -20,7 +20,14 @@ const ChatHeader = ({ toast, onToast }) => {
         activation: '1 hour ago'
     };
 
-
+    const ReportMessage = [
+        "Sexual Message",
+        "Violent or repulsive content",
+        "Hateful or abusive content",
+        "Harmful or dangerous acts",
+        "Spam or misleading",
+        "Threatening message"
+    ]
 
 
     return (
@@ -51,24 +58,66 @@ const ChatHeader = ({ toast, onToast }) => {
             <div className='flex relative gap-4 sm:gap-8 text-2xl sm:text-3xl'>
                 <button onClick={onToast} aria-label="Call"><MdAddIcCall /></button>
                 <button onClick={onToast} aria-label="Video Call"><IoVideocam /></button>
-                <button aria-label="Info" onClick={toggleModal}><FaInfoCircle /></button>
+
+                <div className="dropdown dropdown-end ">
+                    <div tabIndex={0} role="button" className=" m-1">
+                        <FaInfoCircle/>
+                    </div>
+                    <ul tabIndex={0} className="dropdown-content menu bg-[#212121]  rounded-box z-1 w-52   shadow-sm flex flex-col gap-4 p-4 ">
+                        <button
+                            className="py-3 w-full text-white cursor-pointer rounded-[8px] shadow-xl shadow-amber-50/5"
+                            style={{
+                                background: "linear-gradient(10deg, #282828 -28.66%, #8E8E8E 386.98%)",
+                            }}
+                        >
+                            View Profile
+                        </button>
+
+                        <button
+                            className="py-3 w-full text-white bg-[#ED4337] cursor-pointer rounded-[8px] shadow shadow-amber-50/10"
+                           
+                            onClick={() => document.getElementById('my_modal_5').showModal()}
+                        >
+                            Report
+                        </button>
+                    </ul>
+                </div>
             </div>
 
-            {/* Modal */}
-            {isModalOpen && (
-                <div className="absolute right-65 top-30 mt-2 bg-[#333] rounded-lg shadow-lg p-4  ">
 
-                        
-                    <UserProfile/>
-                    
-                    <button
-                        onClick={toggleModal}
-                        className="text-sm text-blue-500 mt-4 w-full text-center"
-                    >
-                        Close
-                    </button>
+
+
+            <dialog id="my_modal_5" className="modal sm:modal-middle">
+                <div className="modal-box bg-[#212121] text-white">
+                    <h3 className="font-bold text-lg mb-4">Report this user</h3>
+
+                    <form method="dialog" className="space-y-3">
+                        {ReportMessage.map((option, index) => (
+                            <label
+                                key={index}
+                                className="flex items-center gap-3 cursor-pointer hover:bg-[#2a2a2a] p-2 rounded"
+                            >
+                                <input type="radio" name="radio-10" className="radio  text-[#ED4337]  " value={option} defaultChecked />
+
+                                <span>{option}</span>
+                            </label>
+                        ))}
+
+                        <div className="modal-action mt-6 flex justify-end">
+                            <button className="btn bg-gray-700 text-white">Cancel</button>
+                            <button
+                                type="submit"
+                                className="btn bg-[#ED4337]  text-white"
+                            >
+                                Report
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            )}
+            </dialog>
+
+
+
         </div>
     );
 };
