@@ -6,7 +6,7 @@ const Message = () => {
   return (
     <div className='max-w-[1440px] mx-auto h-[calc(100vh-65px)] flex gap-5'>
       {/* chat person selcet section */}
-      <div className='w-[30%] bg-red-400 rounded-xl'>
+      <div className='w-[30%] rounded-xl'>
         <ChatPersonSection />
       </div>
       {/* chat section  where person chat*/}
