@@ -9,9 +9,9 @@ const FeedHeader = ({ profileImage, username, name, time }) => {
             </div>
             <div>
                 <p>@{username || 'arshanto' }</p>
-                <div className="flex gap-1 text-md md:text-xl">
+                <div className="flex gap-1 items-center text-md md:text-xl">
                     <h3 className="text-[#FFF]">{name || 'George Jose' }</h3>
-                    <h1 className="text-[var(--yellow-color)]">. {time || '1 hour ago' }</h1>
+                    <h1 className="text-[var(--yellow-color)] text-base"> . {time || '1 hour ago' }</h1>
                 </div>
             </div>
         </div>
