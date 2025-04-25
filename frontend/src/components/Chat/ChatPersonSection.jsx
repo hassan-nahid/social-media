@@ -4,13 +4,13 @@ import { TbSearch, TbAdjustmentsHorizontal } from "react-icons/tb";
 import ChatPersonProfile from "./ChatPersonProfile";
 
 
-const ChatPersonSection = () => {
+const ChatPersonSection = ({activeProfile, setActiveProfile, chatProfiles}) => {
 
   const [activeTab, setActiveTab] = useState("primary");
-
+  
 
   return (
-    <div className="p-4 gray-color rounded-xl">
+    <div className="p-4 gray-color h-full rounded-xl">
       <div className="">
         <div className="text-white text-2xl flex font-semibold justify-between items-center">
           <h1>Messages</h1>
@@ -59,7 +59,17 @@ const ChatPersonSection = () => {
             </div>
           </div>
 
-            <ChatPersonProfile/>
+          <div className="mt-4 flex flex-col gap-5 p-4 scroll-on-hover overflow-y-auto h-[calc(100vh-250px)]">
+            {chatProfiles.map((profile) => (
+              <ChatPersonProfile
+                key={profile.id}
+                name={profile.name}
+                message={profile.message}
+                isActive={activeProfile === profile.id}
+                onClick={() => setActiveProfile(profile.id)}
+              />
+            ))}
+          </div>
 
         </div>
 
