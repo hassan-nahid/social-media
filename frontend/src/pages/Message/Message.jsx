@@ -10,7 +10,7 @@ const Message = () => {
         <ChatPersonSection />
       </div>
       {/* chat section  where person chat*/}
-      <div className='w-[70%] bg-blue-400 rounded-xl'>
+      <div className='w-[70%]  rounded-xl'>
         <ChatSection />
       </div>
 
