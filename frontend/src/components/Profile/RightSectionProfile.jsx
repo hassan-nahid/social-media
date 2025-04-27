@@ -4,7 +4,7 @@ import AboutUser from '../Home/AboutUser';
 
 const RightSectionProfile = ({ isMobile }) => {
     return (
-        <div className={`${isMobile ? 'w-full' : 'w-[350px] lg:w-[400px]'} flex flex-col gap-6 md:gap-8 px-4 md:px-0`}>
+        <div className={`${isMobile ? 'w-full' : 'w-[350px] lg:w-[400px]'} py-1 flex flex-col gap-6 md:gap-8 px-4 md:px-0`}>
 
             {/* User Profile Section */}
             <UserProfile />
