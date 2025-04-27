@@ -16,6 +16,7 @@ import Story2 from "../assets/story2.jpg"
 import Story3 from "../assets/story3.jpg"
 import emoji from "../assets/Emoji.png"
 import fileIcon from "../assets/fileIcon.png"
+import editIcon from "../assets/pencil.png"
 
 export const assest = {
     logo,
@@ -36,4 +37,5 @@ export const assest = {
     Story3,
     emoji,
     fileIcon,
+    editIcon,
 }

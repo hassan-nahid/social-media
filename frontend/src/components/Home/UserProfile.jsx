@@ -1,6 +1,9 @@
 import React from 'react'
 import { assest } from '../../assets/assest'
+import { useNavigate } from 'react-router'
+
 const UserProfile = () => {
+    const navigate = useNavigate()
     return (
         <div className="relative h-[533px] bg-white-color w-full rounded-[15px] overflow-hidden">
             {/* Cover Image */}
