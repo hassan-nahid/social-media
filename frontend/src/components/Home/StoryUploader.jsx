@@ -40,9 +40,9 @@ const StoryUploader = ({ onUpload }) => {
       {/* Open Modal Button */}
       <div
         onClick={() => setIsOpen(true)}
-        className="border-yellow-300 border-2 rounded-xl w-24 h-24 flex items-center justify-center cursor-pointer bg-black"
+        className="border-[var(--yellow-color)] border-2 rounded-xl w-24 h-24 flex items-center justify-center cursor-pointer bg-black"
       >
-        <span className="text-xl font-bold text-yellow-300">+</span>
+        <span className="text-xl font-bold text-[var(--yellow-color)]">+</span>
       </div>
 
       {/* Modal */}
@@ -67,7 +67,7 @@ const StoryUploader = ({ onUpload }) => {
             {/* Styled Select Button */}
             <button
               onClick={handleFileSelect}
-              className="w-full mb-4 py-2 bg-yellow-300 hover:bg-yellow-400 rounded-md font-medium text-black"
+              className="w-full mb-4 py-2 yellow-color hover:bg-yellow-400 rounded-md font-medium text-black"
             >
               Choose Image
             </button>
