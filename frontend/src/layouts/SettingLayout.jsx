@@ -76,7 +76,7 @@ const SettingLayout = () => {
           <div className="sm:hidden p-2">
             <button
               onClick={handleBackToMenu}
-              className="flex items-center gap-2 text-white text-lg hover:text-yellow-300 transition-all"
+              className="flex items-center gap-2 text-white text-lg hover:text-[var(--yellow-color)] transition-all"
             >
               <IoMdArrowBack className="text-2xl" />
               <span>Back to Settings</span>
