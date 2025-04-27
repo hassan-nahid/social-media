@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { assest } from '../../assets/assest';
+import AboutUser from '../Home/AboutUser';
 
 const UserProfile = () => {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const UserProfile = () => {
                 <span className="font-medium">Edit Profile</span>
             </button>
 
-
+            
         </div>
     );
 };

@@ -51,7 +51,7 @@ body {
 }
 
 
-
+  
 .yellow-color {
   @apply bg-[var(--yellow-color)]
 }

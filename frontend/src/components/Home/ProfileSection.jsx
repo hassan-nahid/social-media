@@ -1,30 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { assest } from '../../assets/assest';
 import {
-  FaBriefcase,
-  FaGraduationCap,
-  FaHome,
-  FaMapMarkerAlt,
   FaHeart,
-  FaInfoCircle,
   FaBell,
   FaUserPlus,
   FaCommentDots
 } from 'react-icons/fa';
 import UserProfile from './UserProfile';
+import AboutUser from './AboutUser';
+
 
 const ProfileSection = () => {
-  const navigate = useNavigate();
-
-  const bioDetails = [
-    { icon: <FaInfoCircle />, label: 'Profile', value: 'Digital creator' },
-    { icon: <FaBriefcase />, label: 'Works at', value: 'YouTube' },
-    { icon: <FaGraduationCap />, label: 'Studied at', value: 'Sirajgonj Polytechnic Institute' },
-    { icon: <FaHome />, label: 'Lives in', value: 'Rajshahi' },
-    { icon: <FaMapMarkerAlt />, label: 'From', value: 'Rajshahi' },
-    { icon: <FaHeart />, label: '', value: 'Single' },
-  ];
 
   const [notifications, setNotifications] = useState([
     { icon: <FaUserPlus className="text-[var(--text-gray)] mt-1" />, text: <p><strong>@johndoe</strong> followed you.</p> },
@@ -41,20 +26,8 @@ const ProfileSection = () => {
 
       <UserProfile />
 
-      {/* Bio Info Section */}
-      <div className="mt-6 bg-[var(--gray-color)] p-4 rounded-[15px] text-white">
-        <h1 className="text-[#FFF] text-xl font-bold ml-1.5 mb-4">About</h1>
-        {bioDetails.map((item, index) => (
-          <div key={index} className="flex items-start gap-3 py-1 text-sm mt-2">
-            <span className="text-lg mt-1 text-[var(--text-gray)]">{item.icon}</span>
-            <span>
-              {item.label && <strong>{item.label}</strong>}
-              {item.label && item.value && ' · '}
-              <span className="text-white">{item.value}</span>
-            </span>
-          </div>
-        ))}
-      </div>
+      {/* About Info Section */}
+      <AboutUser/>
 
       {/* Notifications Section */}
       <div className="mt-6 bg-[var(--gray-color)] p-4 rounded-[15px] text-white">
