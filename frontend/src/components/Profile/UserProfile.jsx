@@ -7,7 +7,7 @@ const UserProfile = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='flex flex-col items-center text-center bg-[#282828] rounded-xl p-6  shadow-lg m-4 md:m-0 '>
+        <div className='flex flex-col items-center text-center bg-[#282828] rounded-xl p-6  shadow-lg  mx-4  '>
             <div className="relative group">
                 <img
                     src={assest.blankImage}

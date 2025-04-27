@@ -53,10 +53,14 @@ const UserPost = () => {
 
     return (
         <div className="flex flex-col  mx-4 overflow-y-auto   ">
-            <PostSection />
+
+                <div>
+                    <PostSection />
+                </div>
+        
 
             {/* Scrollable Post Section */}
-            <div className="space-y-6 m-4">
+            <div className="space-y-6 m-4 ">
                 {posts.map((post) => (
                     <div key={post.id} className="p-5 bg-[#1f1f1f] rounded-2xl shadow-lg hover:shadow-2xl transition">
                         <FeedHeader 

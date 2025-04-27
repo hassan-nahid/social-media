@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
       {/* flex container */}
-      <div className={`flex gap-8 ${isMobile ? 'flex-col' : 'flex-row'} h-full 
+      <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} h-full 
         ${isMobile ? 'max-h-[calc(100vh-120px)] overflow-y-auto scroll-on-hover' : ''}`}>
 
         {/* Profile Section */}
