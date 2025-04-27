@@ -10,6 +10,9 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Profile from "../pages/Profile/Profile";
 import Message from "../pages/Message/Message";
 import SettingLayout from "../layouts/SettingLayout";
+import UpdateProfile from "../pages/Setting/UpdateProfile";
+import ChangePassword from "../pages/Setting/ChangePassword";
+import VerifyBadge from "../pages/Setting/VerifyBadge";
 
 
 
@@ -44,8 +47,17 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
         children: [
             {
-
-            }
+                path: "/setting",
+                element: <UpdateProfile/>,
+            },
+            {
+                path: "/setting/change-password",
+                element: <ChangePassword/>,
+            },
+            {
+                path: "/setting/verify-badge",
+                element: <VerifyBadge/>,
+            },
         ]
     }
 ])
