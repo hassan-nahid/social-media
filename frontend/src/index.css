@@ -13,6 +13,7 @@
 
 
 
+
 body {
   font-family: "Outfit", sans-serif;
   background-color: var(--black-color);
@@ -72,6 +73,9 @@ body {
   @apply text-[var(--text-gray)]
 }
 
+.text-yellow {
+  @apply text-[var(--yellow-color)]
+}
 
 .navIcon {
   @apply absolute text-[var(--white-color)] top-6 left-2 w-1.5 h-1.5 rounded-full bg-[var(--yellow-color)]

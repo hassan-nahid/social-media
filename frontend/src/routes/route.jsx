@@ -6,10 +6,13 @@ import {
 import Login from "../pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../pages/Home/Home";
-import Setting from "../pages/Setting/Setting";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Profile from "../pages/Profile/Profile";
 import Message from "../pages/Message/Message";
+import SettingLayout from "../layouts/SettingLayout";
+import UpdateProfile from "../pages/Setting/UpdateProfile";
+import ChangePassword from "../pages/Setting/ChangePassword";
+import VerifyBadge from "../pages/Setting/VerifyBadge";
 
 
 
@@ -31,14 +34,30 @@ export const router = createBrowserRouter([
                 path: "/message",
                 element: <Message />,
             },
-            {
-                path: "/setting",
-                element: <Setting/>
-            },
+
         ],
     },
     {
         path: "/login",
         element: <Login />
+    },
+    {
+        path: "/setting",
+        element: <PrivateRoute><SettingLayout/></PrivateRoute>,
+        errorElement: <ErrorPage/>,
+        children: [
+            {
+                path: "/setting",
+                element: <UpdateProfile/>,
+            },
+            {
+                path: "/setting/change-password",
+                element: <ChangePassword/>,
+            },
+            {
+                path: "/setting/verify-badge",
+                element: <VerifyBadge/>,
+            },
+        ]
     }
 ])
