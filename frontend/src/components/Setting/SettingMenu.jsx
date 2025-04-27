@@ -4,7 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaUnlockKeyhole } from 'react-icons/fa6';
 import { LuBadgeCheck } from "react-icons/lu";
 
-const SettingMenu = ({ setShowContentMobile }) => {
+const SettingMenu = ({ searchQuery, setShowContentMobile }) => {
   const [activeId, setActiveId] = useState(null);
 
   const settingMenuItems = [
@@ -21,6 +21,10 @@ const SettingMenu = ({ setShowContentMobile }) => {
     // { id: 11, name: "Privacy Policy", icon: "", url: "/setting/privacy-policy" },
   ];
 
+  // Filter menu items based on search query
+  const filteredItems = settingMenuItems.filter(item =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleClick = (id) => {
     setActiveId(id);
@@ -29,13 +33,13 @@ const SettingMenu = ({ setShowContentMobile }) => {
 
   return (
     <div className="flex flex-col gap-2 mt-4">
-      {settingMenuItems.map((item) => (
+      {filteredItems.map((item) => (
         <Link
           key={item.id}
           to={item.url}
           onClick={() => handleClick(item.id)}
           className={`flex h-10 items-center gap-2 px-2 rounded text-xl md:text-base  lg:text-xl transition-all duration-300 cursor-pointer 
-            ${activeId === item.id ? "yellow-color text-black" : "hover:text-yellow-300 text-white"}`}
+            ${activeId === item.id ? "yellow-color text-black" : "hover:text-[var(--yellow-color)] text-white"}`}
         >
           {item.icon && <span className="text-2xl">{item.icon}</span>}
           <span>{item.name}</span>

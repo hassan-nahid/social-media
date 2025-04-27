@@ -12,6 +12,7 @@ import SettingMenu from '../components/Setting/SettingMenu';
 const SettingLayout = () => {
   const [signOut] = useSignOut(auth);
   const [showContentMobile, setShowContentMobile] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");  // Add search query state
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -42,20 +43,18 @@ const SettingLayout = () => {
                   <TbSearch className="h-4 w-4" />
                 </span>
 
-                <span className="absolute inset-y-0 right-3 flex items-center text-neutral-400 cursor-pointer">
-                  <TbAdjustmentsHorizontal className="h-4 w-4" />
-                </span>
-
                 <input
                   type="text"
                   placeholder="Search settings"
                   className="bg-neutral-700 rounded-xl w-full h-8 pl-10 pr-10 outline-none text-white placeholder:text-neutral-400"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}  // Update search query on change
                 />
               </div>
 
               {/* Menu Items */}
               <div className="scroll-on-hover overflow-y-auto h-[calc(100vh-200px)]">
-                <SettingMenu setShowContentMobile={setShowContentMobile} />
+                <SettingMenu searchQuery={searchQuery} setShowContentMobile={setShowContentMobile} />
               </div>
             </div>
 
@@ -72,7 +71,7 @@ const SettingLayout = () => {
         </div>
 
         {/* Content */}
-        <div className={`h-full bg-blue-300 flex-1 ${showContentMobile ? "block" : "hidden"} sm:block`}>
+        <div className={`h-full overflow-y-auto scroll-on-hover flex-1 ${showContentMobile ? "block" : "hidden"} sm:block`}>
           {/* Back Button (only mobile) */}
           <div className="sm:hidden p-2">
             <button
