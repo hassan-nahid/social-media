@@ -7,12 +7,12 @@ const UserFollowers = () => {
         {
             profile: assest.blankImage,
             name: 'Abdur Rahman',
-            bio: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, ullam?',
+            username: '@abdurrahman',
         },
         {
             profile: assest.blankImage,
             name: 'Abdur Rahman',
-            bio: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, ullam?',
+            username: 'abdurrahman',
         },
     ];
 
@@ -35,7 +35,7 @@ const UserFollowers = () => {
                                 <p className="font-semibold text-white hover:underline   ">{follower.name}</p>
                             </div>
                             <p className="text-xs text-gray-400 mt-1 line-clamp-2 max-w-xs sm:max-w-md">
-                                {follower.bio}
+                                {follower.username}
                             </p>
                         </div>
                     </div>

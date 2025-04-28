@@ -8,12 +8,12 @@ const UserFollowing = () => {
         {
             profile: assest.blankImage,
             name: 'Abdur Rahman',
-            bio: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, ullam?',
+            username: '@abdurrahman',
         },
         {
             profile: assest.blankImage,
             name: 'Abdur Rahman',
-            bio: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, ullam?',
+            username: '@abdurrahman',
         },
     ];
 
@@ -39,7 +39,7 @@ const UserFollowing = () => {
 
 
                             <p className="text-xs text-gray-400 truncate max-w-[200px] sm:max-w-[300px]">
-                                {f.bio}
+                                {f.username}
                             </p>
                         </div>
                     </div>
