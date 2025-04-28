@@ -4,10 +4,14 @@ import { assest } from '../../assets/assest';
 import { GoHomeFill } from "react-icons/go";
 import { IoPersonSharp, IoSettingsSharp } from "react-icons/io5";
 import { TbMessageCircleFilled } from "react-icons/tb";
+import useUser from '../../hooks/useUser';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const {user} = useUser()
+
+  console.log(user.email)
 
   const navItems = [
     { icon: GoHomeFill, path: '/' },
@@ -42,7 +46,7 @@ const Navbar = () => {
               className="relative cursor-pointer flex flex-col items-center group"
               onClick={() => navigate(item.path)}
             >
-              <button className={`text-2xl transition-colors duration-200 ${active ? 'text-[#FFFD02]' : 'text-white'} group-hover:text-[#FFFD02]`}>
+              <button className={`text-2xl cursor-pointer transition-colors duration-200 ${active ? 'text-[#FFFD02]' : 'text-white'} group-hover:text-[#FFFD02]`}>
                 <IconComponent />
               </button>
               {active && (

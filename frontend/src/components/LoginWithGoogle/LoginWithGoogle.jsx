@@ -2,12 +2,22 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useNavigate } from 'react-router';
+import useUser from "../../hooks/useUser";
+
 
 const LoginWithGoogle = () => {
 
 const [signInWithGoogle] = useSignInWithGoogle(auth);
 
 const [isBouncing, setIsBouncing] = useState(false);
+
+  const {user} = useUser();
+    const navigate = useNavigate();
+
+    if(user) {
+        navigate("/");
+    }
 
 const handleGoogleSignIn = async () => {
     setIsBouncing(true); // Trigger bounce animation
