@@ -22,7 +22,7 @@ const Navbar = () => {
     <nav className="flex justify-between black-color items-center sm:px-4 md:px-12 py-2">
       {/* Logo & Search */}
       <div className="flex items-center gap-4">
-        <img src={assest.logo} alt="Logo" className="w-[30px] h-[30px] rounded-full" />
+        <img src={assest.logo} alt="Logo" className="w-[30px] h-[30px] cursor-pointer rounded-full" onClick={() => navigate('/')} />
         <input
           type="text"
           placeholder="#Explore"
@@ -42,7 +42,7 @@ const Navbar = () => {
               className="relative cursor-pointer flex flex-col items-center group"
               onClick={() => navigate(item.path)}
             >
-              <button className={`text-2xl transition-colors duration-200 ${active ? 'text-[#FFFD02]' : 'text-white'} group-hover:text-[#FFFD02]`}>
+              <button className={`text-2xl cursor-pointer transition-colors duration-200 ${active ? 'text-[#FFFD02]' : 'text-white'} group-hover:text-[#FFFD02]`}>
                 <IconComponent />
               </button>
               {active && (
