@@ -14,11 +14,11 @@ const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [localError, setLocalError] = useState("");
     const [isBouncing, setIsBouncing] = useState(false);
     const navigate = useNavigate();
     const { user } = useUser();
-
 
     const [
         createUserWithEmailAndPassword,
@@ -39,16 +39,24 @@ const Register = () => {
         e.preventDefault();
         setIsBouncing(true);
         setTimeout(() => setIsBouncing(false), 500);
-
         setLocalError("");
+
+        if (password !== confirmPassword) {
+            setLocalError("Passwords do not match");
+            return;
+        }
 
         try {
             const createdUser = await createUserWithEmailAndPassword(email, password);
             if (createdUser) {
                 await updateProfile(auth.currentUser, { displayName: name });
                 await sendEmailVerification(auth.currentUser);
-                toast.success("Verification email sent. Please verify your email.");
+                toast.success("Verification email sent. Please verify your email.", {
+                    duration: 5000,
+                });
 
+                await auth.signOut();
+                navigate("/login");
             }
         } catch (error) {
             console.error("Auth Error:", error);
@@ -58,8 +66,9 @@ const Register = () => {
     };
 
     useEffect(() => {
-        if (user) {
-            navigate("/login");
+        if (user && !user.emailVerified) return;
+        if (user && user.emailVerified) {
+            navigate("/");
         }
     }, [user, navigate]);
 
@@ -73,20 +82,25 @@ const Register = () => {
                     </div>
                     <h2 className='login-middle-text mt-[30px] text-center'>CREATE ACCOUNT</h2>
 
-                    <form onSubmit={handleRegister} className="max-w-[700px] mx-auto mt-6">
-                        <div className="flex flex-col mb-7">
+                    <form onSubmit={handleRegister} className="max-w-[700px] mx-auto mt-0">
+                        <div className="flex flex-col mb-2">
                             <label htmlFor="name" className="text-white">Full Name</label>
                             <input onChange={(e) => setName(e.target.value)} className="h-[40px] px-2 login-input text-white" type="text" id="name" name="name" required />
                         </div>
 
-                        <div className="flex flex-col mb-7">
+                        <div className="flex flex-col mb-2">
                             <label htmlFor="email" className="text-white">Email</label>
                             <input onChange={(e) => setEmail(e.target.value)} className="h-[40px] px-2 login-input text-white" type="email" id="email" name="email" required />
                         </div>
 
-                        <div className="flex flex-col mb-5">
+                        <div className="flex flex-col mb-2">
                             <label htmlFor="password" className="text-white">Password</label>
                             <input onChange={(e) => setPassword(e.target.value)} className="h-[40px] px-2 login-input text-white" type="password" id="password" name="password" required />
+                        </div>
+
+                        <div className="flex flex-col mb-2">
+                            <label htmlFor="confirmPassword" className="text-white">Confirm Password</label>
+                            <input onChange={(e) => setConfirmPassword(e.target.value)} className="h-[40px] px-2 login-input text-white" type="password" id="confirmPassword" name="confirmPassword" required />
                         </div>
 
                         {localError && (
@@ -96,6 +110,7 @@ const Register = () => {
                         <button className={`h-[55px] cursor-pointer bg-black text-white w-full mt-4 text-2xl font-light ${isBouncing ? "bounce-once" : ""}`} type="submit">
                             Sign Up
                         </button>
+
                         <LoginWithGoogle />
 
                         <div className="text-center mt-5">
