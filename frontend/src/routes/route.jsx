@@ -13,6 +13,7 @@ import SettingLayout from "../layouts/SettingLayout";
 import UpdateProfile from "../pages/Setting/UpdateProfile";
 import ChangePassword from "../pages/Setting/ChangePassword";
 import VerifyBadge from "../pages/Setting/VerifyBadge";
+import Register from "../pages/Login/Register";
 
 
 
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
     {
         path: "/login",
         element: <Login />
+    },
+    {
+        path: "/register",
+        element: <Register />
     },
     {
         path: "/setting",

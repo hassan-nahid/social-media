@@ -9,6 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+
   const navItems = [
     { icon: GoHomeFill, path: '/' },
     { icon: IoPersonSharp, path: '/profile' },
