@@ -14,7 +14,6 @@ const ChatFooter = ({ toast, onToast }) => {
     };
 
     const handleSend = () => {
-        console.log('Message:', inputValue);
         if (image) {
             console.log('Image:', image.file);
         }

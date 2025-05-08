@@ -69,7 +69,6 @@ const LoginForm = ({ isSignup }) => {
             await signOut(auth);
             toast.error("Please verify your email before logging in.");
           } else {
-            console.log(loggedInUser.user);
             toast.success("User Signed In");
             navigate("/");
           }

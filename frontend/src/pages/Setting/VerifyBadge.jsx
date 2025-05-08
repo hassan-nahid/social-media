@@ -51,9 +51,7 @@ const VerifyBadge = () => {
     }
 
     // Handle submission logic here (send data to server, etc.)
-    console.log('Full Name:', fullName);
-    console.log('Email:', email);
-    console.log('File:', file);
+   
 
     // Reset fields after submission
     setFullName('');

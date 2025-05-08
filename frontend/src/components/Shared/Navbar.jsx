@@ -4,10 +4,13 @@ import { assest } from '../../assets/assest';
 import { GoHomeFill } from "react-icons/go";
 import { IoPersonSharp, IoSettingsSharp } from "react-icons/io5";
 import { TbMessageCircleFilled } from "react-icons/tb";
+// import useUser from '../../hooks/useUser';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // const {user} = useUser()
 
 
   const navItems = [

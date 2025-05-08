@@ -37,7 +37,6 @@ const Login = () => {
         e.preventDefault();
         setIsBouncing(true);
         setTimeout(() => setIsBouncing(false), 500);
-
         setLocalError("");
 
         try {
@@ -47,8 +46,36 @@ const Login = () => {
                     await signOut(auth);
                     toast.error("Please verify your email before logging in.");
                 } else {
-                    toast.success("Logged in successfully");
-                    navigate("/");
+                    // ✅ Extract email & userName
+                    const userEmail = loggedInUser.user.email;
+                    const userName = userEmail.split("@")[0]; // Take part before @
+
+                    // ✅ Prepare user data
+                    const userData = {
+                        uid: loggedInUser.user.uid,
+                        name: loggedInUser.user.displayName || "Anonymous",
+                        userName: userName,
+                        email: userEmail,
+                    };
+
+                    const res = await fetch(`${import.meta.env.VITE_LINK}/api/user/login`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(userData),
+                    });
+
+                    const data = await res.json();
+
+                    if (res.ok) {
+                        // ✅ Save token
+                        localStorage.setItem("token", data.token);
+                        toast.success("Logged in successfully");
+                        navigate("/");
+                    } else {
+                        toast.error(data.message || "Backend login failed");
+                    }
                 }
             }
         } catch (error) {
@@ -57,11 +84,12 @@ const Login = () => {
             toast.error(error.message || "Something went wrong");
         }
     };
+
     useEffect(() => {
         if (user) {
-          navigate("/");
+            navigate("/");
         }
-      }, [user,navigate]);
+    }, [user, navigate]);
 
     return (
         <div className='w-full mx-auto bg-login-gradient rounded-b-xl'>
@@ -72,7 +100,7 @@ const Login = () => {
                         <h1 className='text-[30px] font-extrabold login-logo-text'>Zomiraq</h1>
                     </div>
                     <h2 className='login-middle-text mt-[30px] text-center'>WELCOME BACK</h2>
-                    
+
                     <form onSubmit={handleLogin} className="max-w-[700px] mx-auto mt-10">
                         <div className="flex flex-col mb-7">
                             <label htmlFor="email" className="text-white">Email</label>
@@ -92,7 +120,7 @@ const Login = () => {
                             Sign In
                         </button>
 
-                        <LoginWithGoogle/>
+                        <LoginWithGoogle />
 
                         <div className="text-center mt-5">
                             Don't have an account?{" "}

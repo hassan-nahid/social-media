@@ -17,6 +17,7 @@ const SettingLayout = () => {
 
   const handleLogout = async () => {
     await signOut();
+    localStorage.removeItem("token");
   };
 
   const handleBackToMenu = () => {

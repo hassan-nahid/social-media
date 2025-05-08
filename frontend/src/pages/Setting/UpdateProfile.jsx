@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FiCamera } from 'react-icons/fi';
 import { assest } from '../../assets/assest';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import useUser from '../../hooks/useUser';
 
 const UpdateProfile = () => {
   const [name, setName] = useState('');
@@ -12,32 +15,83 @@ const UpdateProfile = () => {
   const [from, setFrom] = useState('');
   const [relationship, setRelationship] = useState('Single');
   const [username, setUsername] = useState('');
-  
-  const profileBlankImage = assest.blankImage; // Assuming you have a blank profile image in your assets
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const profileBlankImage = assest.blankImage;
+  const { user } = useUser();
+  const userId = user?.uid;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      name,
-      bio,
-      worksAt,
-      studiedAt,
-      livesIn,
-      from,
-      relationship,
-      username,
-      profileImage
-    });
-    // Upload/save logic here
+
+    // Validation: Check if all fields are filled
+    if (!profileImage) return toast.error('Please upload a profile image!');
+    if (!name.trim()) return toast.error('Please enter your name!');
+    if (!username.trim()) return toast.error('Please enter a username!');
+    if (!bio.trim()) return toast.error('Please enter your bio!');
+    if (!worksAt.trim()) return toast.error('Please enter where you work!');
+    if (!studiedAt.trim()) return toast.error('Please enter where you studied!');
+    if (!livesIn.trim()) return toast.error('Please enter your current city!');
+    if (!from.trim()) return toast.error('Please enter your hometown!');
+    if (!relationship) return toast.error('Please select your relationship status!');
+
+    setLoading(true);
+
+    try {
+      let base64Image = await convertToBase64(profileImage);
+
+      // Prepare payload
+      const payload = {
+        uid: userId,
+        name,
+        bio,
+        worksAt,
+        studiedAt,
+        livesIn,
+        from,
+        relationship,
+        userName: username,
+        image: base64Image,
+      };
+
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_LINK}/api/user/update-profile`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          }
+        }
+      );
+
+      toast.success('Profile updated successfully!');
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.message || "Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith('image/')) {
       setProfileImage(file);
     } else {
-      alert('Please select a valid image file (jpg, png, jpeg).');
+      toast.error('Please select a valid image file (jpg, png, jpeg).');
     }
+  };
+
+  // Utility function: Convert file to base64
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   return (
@@ -53,7 +107,6 @@ const UpdateProfile = () => {
             alt="Profile Preview"
             className="w-32 h-32 rounded-full object-cover border-4 border-neutral-700 shadow-lg"
           />
-          {/* Overlay for "Change Photo" */}
           <label htmlFor="profileImage" className="absolute inset-0 bg-black bg-opacity-50 rounded-full opacity-0 hover:opacity-100 flex items-center justify-center cursor-pointer transition-all duration-300">
             <FiCamera className="text-white text-2xl" />
           </label>
@@ -168,9 +221,10 @@ const UpdateProfile = () => {
         {/* Save Button */}
         <button
           type="submit"
-          className="yellow-color hover:bg-yellow-500 text-black font-semibold py-2 rounded transition-all duration-300 active:scale-95"
+          className={`yellow-color hover:bg-yellow-500 text-black font-semibold py-2 rounded transition-all duration-300 active:scale-95 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={loading}
         >
-          Save Changes
+          {loading ? 'Saving...' : 'Save Changes'}
         </button>
       </form>
     </div>
