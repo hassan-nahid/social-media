@@ -93,3 +93,67 @@ export const updateUserProfile = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+
+export const getSingleUser = async (req, res) => {
+  const { userId } = req.params;
+
+
+  try {
+    const user = await User.findOne({ uid: userId }); // find by uid
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+
+export const followUser = async (req, res) => {
+  const { userId, targetUserId } = req.body;
+
+  if (userId === targetUserId) {
+    return res.status(400).json({ message: "You can't follow yourself" });
+  }
+
+  try {
+    // Add to followers
+    await User.findByIdAndUpdate(targetUserId, {
+      $addToSet: { followers: userId }
+    });
+
+    // Add to following
+    await User.findByIdAndUpdate(userId, {
+      $addToSet: { following: targetUserId }
+    });
+
+    res.json({ message: "Followed successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const unfollowUser = async (req, res) => {
+  const { userId, targetUserId } = req.body;
+
+  try {
+    // Remove from followers
+    await User.findByIdAndUpdate(targetUserId, {
+      $pull: { followers: userId }
+    });
+
+    // Remove from following
+    await User.findByIdAndUpdate(userId, {
+      $pull: { following: targetUserId }
+    });
+
+    res.json({ message: "Unfollowed successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

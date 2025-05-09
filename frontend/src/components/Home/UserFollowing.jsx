@@ -1,7 +1,7 @@
 import React from 'react';
 import { assest } from '../../assets/assest';
 import { BiSolidMessageRounded } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
+import { FaUserMinus } from "react-icons/fa";
 
 const UserFollowing = () => {
     const following = [
@@ -52,7 +52,7 @@ const UserFollowing = () => {
                             <BiSolidMessageRounded size={18} /> Message
                         </button>
                         <button className="flex items-center justify-center gap-1 px-4 py-2 bg-[#101828] cursor-pointer  text-white rounded-xl text-sm font-semibold hover:bg-gray-800 transition-all w-full sm:w-auto">
-                            <AiFillDelete size={18} /> Remove
+                            <FaUserMinus size={18} /> Unfollow
                         </button>
                     </div>
                 </div>

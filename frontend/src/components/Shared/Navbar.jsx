@@ -4,6 +4,8 @@ import { assest } from '../../assets/assest';
 import { GoHomeFill } from "react-icons/go";
 import { IoPersonSharp, IoSettingsSharp } from "react-icons/io5";
 import { TbMessageCircleFilled } from "react-icons/tb";
+import useUserData from '../../hooks/useUserData';
+import { useEffect } from 'react';
 // import useUser from '../../hooks/useUser';
 
 const Navbar = () => {
@@ -12,6 +14,11 @@ const Navbar = () => {
 
   // const {user} = useUser()
 
+  const { userData, refetch } = useUserData()
+
+  useEffect(() => {
+    refetch()
+  },[refetch])
 
   const navItems = [
     { icon: GoHomeFill, path: '/' },
@@ -65,8 +72,9 @@ const Navbar = () => {
       <div>
         <button onClick={() => navigate('/profile')}>
           <img
-            src={assest.blankImage}
+            src={userData?.image || assest.blankImage}
             alt="Profile"
+            title={userData?.name}
             className="h-[40px] border-yellow-300 border-2 p-1 rounded-full w-[40px] object-cover cursor-pointer"
           />
         </button>

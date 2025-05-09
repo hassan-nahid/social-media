@@ -7,9 +7,11 @@ import {
 } from 'react-icons/fa';
 import UserProfile from './UserProfile';
 import AboutUser from './AboutUser';
-
+import useUserData from '../../hooks/useUserData';
 
 const ProfileSection = () => {
+
+  const { userData } = useUserData();
 
   const [notifications, setNotifications] = useState([
     { icon: <FaUserPlus className="text-[var(--text-gray)] mt-1" />, text: <p><strong>@johndoe</strong> followed you.</p> },
@@ -24,12 +26,13 @@ const ProfileSection = () => {
   return (
     <section className='h-screen p-4'>
 
-      <UserProfile />
+      {/* User Profile */}
+      <UserProfile userData={userData} />
 
-      {/* About Info Section */}
-      <AboutUser/>
+      {/* About Info */}
+      <AboutUser userData={userData} />
 
-      {/* Notifications Section */}
+      {/* Notifications */}
       <div className="mt-6 bg-[var(--gray-color)] p-4 rounded-[15px] text-white">
         <div className="flex items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-2.5">

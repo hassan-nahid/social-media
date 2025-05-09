@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // <-- Import useEffect
 import { FiCamera } from 'react-icons/fi';
 import { assest } from '../../assets/assest';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import useUser from '../../hooks/useUser';
+import useUserData from '../../hooks/useUserData';
 
 const UpdateProfile = () => {
   const [name, setName] = useState('');
@@ -17,15 +18,32 @@ const UpdateProfile = () => {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const profileBlankImage = assest.blankImage;
+  const { userData, refetch } = useUserData();
   const { user } = useUser();
   const userId = user?.uid;
+
+  const profileBlankImage = assest.blankImage;
+
+  // ✅ Prefill the form when userData is available
+ useEffect(() => {
+  if (userData) {
+    setName(userData.name || '');
+    setBio(userData.bio || '');
+    setWorksAt(userData.worksAt || '');
+    setStudiedAt(userData.studiedAt || '');
+    setLivesIn(userData.livesIn || '');
+    setFrom(userData.from || '');
+    setRelationship(userData.relationship || 'Single');
+    setUsername(userData.userName || '');
+    setProfileImage(null); // Keep file upload empty initially
+  }
+}, [userData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation: Check if all fields are filled
-    if (!profileImage) return toast.error('Please upload a profile image!');
+    // Validation
+    if (!profileImage && !userData?.image) return toast.error('Please upload a profile image!');
     if (!name.trim()) return toast.error('Please enter your name!');
     if (!username.trim()) return toast.error('Please enter a username!');
     if (!bio.trim()) return toast.error('Please enter your bio!');
@@ -38,9 +56,11 @@ const UpdateProfile = () => {
     setLoading(true);
 
     try {
-      let base64Image = await convertToBase64(profileImage);
+      let base64Image = userData?.image; // default to existing image
+      if (profileImage) {
+        base64Image = await convertToBase64(profileImage);
+      }
 
-      // Prepare payload
       const payload = {
         uid: userId,
         name,
@@ -65,6 +85,7 @@ const UpdateProfile = () => {
       );
 
       toast.success('Profile updated successfully!');
+      refetch(); // Refresh user data
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -73,7 +94,6 @@ const UpdateProfile = () => {
       setLoading(false);
     }
   };
-
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -84,7 +104,6 @@ const UpdateProfile = () => {
     }
   };
 
-  // Utility function: Convert file to base64
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -103,7 +122,13 @@ const UpdateProfile = () => {
         {/* Profile Image Upload */}
         <div className="relative w-32 h-32 mx-auto">
           <img
-            src={profileImage ? URL.createObjectURL(profileImage) : profileBlankImage}
+            src={
+              profileImage 
+                ? URL.createObjectURL(profileImage) 
+                : userData?.image 
+                  ? userData.image 
+                  : profileBlankImage
+            }
             alt="Profile Preview"
             className="w-32 h-32 rounded-full object-cover border-4 border-neutral-700 shadow-lg"
           />
