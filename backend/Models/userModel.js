@@ -19,7 +19,9 @@ const userSchema = new mongoose.Schema({
   },
   // 🔥 New social fields
   followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  removedUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+
 }, {
   timestamps: true
 });

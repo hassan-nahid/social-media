@@ -86,7 +86,6 @@ const UpdateProfile = () => {
 
       toast.success('Profile updated successfully!');
       refetch(); // Refresh user data
-      console.log(data);
     } catch (error) {
       console.error(error);
       toast.error(error.response?.data?.message || "Something went wrong!");

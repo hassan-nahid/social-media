@@ -27,7 +27,7 @@ const ProfileSection = () => {
     <section className='h-screen p-4'>
 
       {/* User Profile */}
-      <UserProfile userData={userData} />
+      <UserProfile />
 
       {/* About Info */}
       <AboutUser userData={userData} />

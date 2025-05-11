@@ -1,25 +1,27 @@
 import jwt from "jsonwebtoken";
 
 const userVerify = (req, res, next) => {
-    let token;
+    const authHeader = req.headers.authorization;
 
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+        const token = authHeader.split(" ")[1];
+
+        // Check if the token is provided and is in a valid format
+        if (!token || token.trim() === "") {
+            return res.status(401).json({ message: "Not authorized, token missing or malformed" });
+        }
+
         try {
-            token = req.headers.authorization.split(" ")[1];
-
+            // Verify token
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-            req.user = decoded; // { id, iat, exp }
-
+            req.user = decoded; // Attach decoded payload (e.g., { id, iat, exp })
             next();
         } catch (error) {
-            console.error(error);
-            res.status(401).json({ message: "Not authorized, token failed" });
+            console.error("JWT Error:", error);
+            return res.status(401).json({ message: "Not authorized, token invalid" });
         }
-    }
-
-    if (!token) {
-        res.status(401).json({ message: "Not authorized, no token" });
+    } else {
+        return res.status(401).json({ message: "Not authorized, no token provided" });
     }
 };
 

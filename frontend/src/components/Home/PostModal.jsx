@@ -71,7 +71,6 @@ const PostModal = ({ onClose }) => {
             <button
               className="px-4 py-2 yellow-color text-black rounded-xl"
               onClick={() => {
-                console.log("Post submitted:", postText, image);
                 onClose();
               }}
             >

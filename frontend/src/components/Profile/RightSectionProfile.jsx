@@ -4,6 +4,7 @@ import AboutUser from '../Home/AboutUser';
 import { IoCloseCircle } from "react-icons/io5";
 import UserFollowers from '../Home/UserFollowers';
 import UserFollowing from '../Home/UserFollowing';
+import useUserData from '../../hooks/useUserData';
 
 const RightSectionProfile = ({ isMobile }) => {
 
@@ -14,6 +15,9 @@ const RightSectionProfile = ({ isMobile }) => {
             document.getElementById('my_modal_4').showModal();
         };
         
+        const {userData , refetch} = useUserData();
+        const followers = userData?.followers.length || 0;
+        const following = userData?.following.length || 0;
 
     return (
         <div className={`${isMobile ? 'w-full' : 'w-[350px] lg:w-[400px]'} py-1 flex flex-col gap-6 md:gap-8 px-4 md:px-0`}>
@@ -29,11 +33,11 @@ const RightSectionProfile = ({ isMobile }) => {
                 </div>
                 <div className="flex items-center justify-between mb-4">
                     <p className="text-gray-400 hover:underline cursor-pointer " onClick={() => openModal('followers')} >Followers</p>
-                    <p className="font-semibold">1.2K</p>
+                    <p className="font-semibold">{followers}</p>
                 </div>
                 <div className="flex items-center justify-between  ">
                     <p className="text-gray-400 hover:underline cursor-pointer" onClick={() => openModal('following')} >Following</p>
-                    <p className="font-semibold">356</p>
+                    <p className="font-semibold">{following}</p>
                 </div>
             </div>
 
@@ -50,10 +54,10 @@ const RightSectionProfile = ({ isMobile }) => {
                 
                         <div className="overflow-y-auto pr-2" style={{ maxHeight: '70vh' }}>
                             {modalType === 'followers' ? (
-                                <UserFollowers/>
+                                <UserFollowers userData={userData} refetchUserData={refetch}/>
                                 
                             ) : (
-                                <UserFollowing />
+                                <UserFollowing userData={userData} refetchUserData={refetch} modalType={modalType}/>
                             )}
                         </div>
 

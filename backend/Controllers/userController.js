@@ -33,6 +33,15 @@ export const loginUser = async (req, res) => {
   }
 }
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find(); 
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 
 export const updateUserProfile = async (req, res) => {
   try {
@@ -153,6 +162,69 @@ export const unfollowUser = async (req, res) => {
     });
 
     res.json({ message: "Unfollowed successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const removeFriend = async (req, res) => {
+  const { userId, targetUserId } = req.body;
+
+  if (userId === targetUserId) {
+    return res.status(400).json({ message: "You can't remove yourself" });
+  }
+
+  try {
+    // Just add target user to removedUsers array
+    await User.findByIdAndUpdate(userId, {
+      $addToSet: { removedUsers: targetUserId }
+    });
+
+    res.json({ message: "User removed (hidden) from friend list successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getFollowers = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await User.findById(userId).populate({
+      path: "followers",
+      select: "_id name userName image"
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({
+      followers: user.followers
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getFollowing = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await User.findById(userId).populate({
+      path: "following",
+      select: "_id name userName image"
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({
+      following: user.following
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

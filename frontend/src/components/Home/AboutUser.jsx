@@ -4,13 +4,14 @@ import {
     FaHome,
     FaMapMarkerAlt,
     FaHeart,
-    FaInfoCircle,
-
 } from 'react-icons/fa';
 import { twMerge } from 'tailwind-merge';
-const AboutUser = ({ userData, className }) => {
+import useUserData from '../../hooks/useUserData';
+
+const AboutUser = ({ className }) => {
+  const { userData } = useUserData(); // ✅ use user data directly
+
   const bioDetails = [
-    { icon: <FaInfoCircle />, label: 'Profile', value: userData?.profile || 'Digital creator' },
     { icon: <FaBriefcase />, label: 'Works at', value: userData?.worksAt || 'YouTube' },
     { icon: <FaGraduationCap />, label: 'Studied at', value: userData?.studiedAt || 'Sirajgonj Polytechnic Institute' },
     { icon: <FaHome />, label: 'Lives in', value: userData?.livesIn || 'Rajshahi' },
