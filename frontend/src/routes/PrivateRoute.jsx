@@ -7,13 +7,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const PrivateRoute = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!loading && (!user || !token)) {
+    if (!loading && (!user)) {
       navigate("/login");
     }
-  }, [loading, user, token, navigate]);
+  }, [loading, user, navigate]);
 
   if (loading) {
     // Only show loading while Firebase is checking auth
@@ -21,7 +21,7 @@ const PrivateRoute = ({ children }) => {
   }
 
   // If user or token missing, we already navigated, so render nothing
-  if (!user || !token) {
+  if (!user) {
     return null;
   }
 
