@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
+@plugin "daisyui";
 
 
 :root {
@@ -10,8 +11,85 @@
   --text-gray: #FFFFFF80;
 }
 
-* {
+
+
+
+body {
   font-family: "Outfit", sans-serif;
   background-color: var(--black-color);
   color: var(--text-gray);
+}
+
+
+
+/* Custom scroll on hover */
+.scroll-on-hover {
+  overflow-y: scroll; /* Force reserve scrollbar space */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scroll-on-hover:hover {
+  scrollbar-color: var(--yellow-color) transparent;
+}
+
+/* WebKit browsers */
+.scroll-on-hover::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-on-hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-on-hover::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Invisible thumb by default */
+  border-radius: 10px;
+}
+
+.scroll-on-hover:hover::-webkit-scrollbar-thumb {
+  background-color: var(--yellow-color); /* Yellow on hover */
+}
+
+
+  
+.yellow-color {
+  @apply bg-[var(--yellow-color)]
+}
+
+.black-color {
+  @apply bg-[var(--black-color)]
+}
+
+.gray-color {
+  @apply bg-[var(--gray-color)]
+}
+
+.white-color {
+  @apply bg-[var(--white-color)]
+}
+
+.text-gray {
+  @apply text-[var(--text-gray)]
+}
+
+.text-yellow {
+  @apply text-[var(--yellow-color)]
+}
+
+.navIcon {
+  @apply absolute text-[var(--white-color)] top-6 left-2 w-1.5 h-1.5 rounded-full bg-[var(--yellow-color)]
+}
+
+@keyframes story-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-story-progress {
+  animation: story-progress 4s linear forwards;
 }
